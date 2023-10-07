@@ -8,6 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class OrderDashboardComponent {
   @Output() orderEvent = new EventEmitter<number>();
   order: number = 0;
+  randomNumber: number = 0;
   isWorking: boolean = false;
   interval;
 
@@ -15,11 +16,13 @@ export class OrderDashboardComponent {
     if(this.isWorking) return;
 
     this.isWorking = true;
+    this.order = 0;
 
     this.interval = setInterval(() => {
       this.order++;
       this.orderEvent.emit(this.order);
-    }, 2000);
+      this.randomNumber = Math.floor(Math.random() * 20 + 1);
+    }, 200);
   }
 
   onEndWorkday() {
@@ -27,6 +30,10 @@ export class OrderDashboardComponent {
 
     this.isWorking = false;
     clearInterval(this.interval);
-    this.order = 0;
+  }
+
+  lotteryWinner(winningOrder: number) {
+    alert(`You won our company's lottery. Your order number was ${winningOrder}.`);
+    this.onEndWorkday();
   }
 }

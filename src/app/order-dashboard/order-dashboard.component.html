@@ -5,7 +5,10 @@
 <hr>
 <div class="container text-center mt-">
   <app-lottery-winning-order
-  [inputForLottery]="order"></app-lottery-winning-order>
+  [inputForLottery]="order"
+  [lotteryNumber]="randomNumber"
+  (lotteryWinner)="lotteryWinner(order)"
+  ></app-lottery-winning-order>
 </div>
 <div class="row text-center">
   <div class="col">
