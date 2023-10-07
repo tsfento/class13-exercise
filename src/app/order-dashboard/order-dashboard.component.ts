@@ -7,7 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class OrderDashboardComponent {
   @Output() orderEvent = new EventEmitter<number>();
-  order: number = 0;
+  order: number;
   randomNumber: number = 0;
   isWorking: boolean = false;
   interval;
@@ -22,7 +22,7 @@ export class OrderDashboardComponent {
       this.order++;
       this.orderEvent.emit(this.order);
       this.randomNumber = Math.floor(Math.random() * 20 + 1);
-    }, 200);
+    }, 2000);
   }
 
   onEndWorkday() {
@@ -33,7 +33,7 @@ export class OrderDashboardComponent {
   }
 
   lotteryWinner(winningOrder: number) {
-    alert(`You won our company's lottery. Your order number was ${winningOrder}.`);
     this.onEndWorkday();
+    alert(`You won our company's lottery. Your order number was ${winningOrder}.`);
   }
 }
