@@ -1,10 +1,17 @@
-<button class="btn btn-success">Begin Workday</button>
-<button class="btn btn-danger">End Workday</button>
+<button class="btn btn-success" (click)="onBeginWorkday()">Begin Workday</button>
+<button class="btn btn-danger" (click)="onEndWorkday()">End Workday</button>
 <hr>
 <span style="font-weight: bold;">First Five Orders:</span>
 <!-- ngIf to check array length -->
 <!-- ngFor to loop through first five orders -->
-<app-first-five-orders></app-first-five-orders>
+<ng-container
+*ngIf="orders.length < 5"
+>
+  <app-first-five-orders
+  *ngFor="let order of orders; index as i"
+  [firstFiveOrders]="(orders.slice())[i]"
+  ></app-first-five-orders>
+</ng-container>
 <hr>
 <!-- ngIf to check array length -->
 <!-- ngFor to loop through other orders -->
