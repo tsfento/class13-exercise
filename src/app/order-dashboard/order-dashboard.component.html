@@ -1,14 +1,17 @@
-<button class="btn btn-success" (click)="onBeginWorkday()">Begin Workday</button>
-<button class="btn btn-danger" (click)="onEndWorkday()">End Workday</button>
+<div class="text-center">
+  <button class="btn btn-success me-2" (click)="onBeginWorkday()">Begin Workday</button>
+  <button class="btn btn-danger" (click)="onEndWorkday()">End Workday</button>
+</div>
 <hr>
-<span style="font-weight: bold;">First Five Orders:</span>
-
-<app-first-five-orders
-[inputForFiveOrders]="order"
-></app-first-five-orders>
-<hr>
-<span style="font-weight: bold;">All Other Orders:</span>
-
-<app-all-other-orders
-[inputForOtherOrders]="order"
-></app-all-other-orders>
+<div class="row text-center">
+  <div class="col">
+    <app-first-five-orders
+    [inputForFiveOrders]="order"
+    ></app-first-five-orders>
+  </div>
+  <div class="col">
+    <app-all-other-orders
+    [inputForOtherOrders]="order"
+    ></app-all-other-orders>
+  </div>
+</div>
