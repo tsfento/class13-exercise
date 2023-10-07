@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-order-dashboard',
@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./order-dashboard.component.css']
 })
 export class OrderDashboardComponent {
-  orders: string[] = [];
+  @Output() orderEvent = new EventEmitter<number>();
+  order: number = 0;
   isWorking: boolean = false;
   interval;
 
@@ -15,14 +16,9 @@ export class OrderDashboardComponent {
 
     this.isWorking = true;
 
-    let orderNumber: number = 1;
-
     this.interval = setInterval(() => {
-      let order: string = 'Order number: ' + orderNumber.toString();
-
-      orderNumber++;
-      this.orders.push(order);
-      console.log(this.orders);
+      this.order++;
+      this.orderEvent.emit(this.order);
     }, 2000);
   }
 
@@ -31,5 +27,6 @@ export class OrderDashboardComponent {
 
     this.isWorking = false;
     clearInterval(this.interval);
+    this.order = 0;
   }
 }
