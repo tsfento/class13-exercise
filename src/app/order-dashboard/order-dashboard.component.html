@@ -3,6 +3,10 @@
   <button class="btn btn-danger" (click)="onEndWorkday()">End Workday</button>
 </div>
 <hr>
+<div class="container text-center mt-">
+  <app-lottery-winning-order
+  [inputForLottery]="order"></app-lottery-winning-order>
+</div>
 <div class="row text-center">
   <div class="col">
     <app-first-five-orders

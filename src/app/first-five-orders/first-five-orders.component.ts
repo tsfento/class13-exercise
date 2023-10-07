@@ -1,17 +1,13 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-first-five-orders',
   templateUrl: './first-five-orders.component.html',
   styleUrls: ['./first-five-orders.component.css']
 })
-export class FirstFiveOrdersComponent implements OnInit, OnChanges {
+export class FirstFiveOrdersComponent implements OnChanges {
   @Input() inputForFiveOrders: number;
   firstFiveOrders: string[] = [];
-
-  ngOnInit() {
-
-  }
 
   ngOnChanges() {
     if (this.inputForFiveOrders !== 0 && this.inputForFiveOrders <= 5) {
